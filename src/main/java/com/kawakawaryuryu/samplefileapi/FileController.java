@@ -6,7 +6,11 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +33,16 @@ public class FileController {
         StandardCharsets.UTF_8))) {
       br.lines().forEach(line -> log.info("file: {}", line));
     }
+  }
+
+  @GetMapping(path = "/download")
+  public ResponseEntity<String> download() {
+    String data = "1,2,3\n4,5,6";
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_TYPE, "text/csv");
+    headers.add(HttpHeaders.CONTENT_DISPOSITION, "filename=test.csv");
+
+    return new ResponseEntity<>(data, headers, HttpStatus.OK);
   }
 }
