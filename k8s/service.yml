@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: sample-file-api-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http-port
+      protocol: TCP
       port: 8888
       targetPort: 80
-      nodePort: 30080
   selector:
     app: sample-file-api
