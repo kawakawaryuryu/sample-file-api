@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-file-api-service
+spec:
+  type: NodePort
+  ports:
+    - name: http-port
+      port: 8888
+      targetPort: 80
+      nodePort: 30080
+  selector:
+    app: sample-file-api

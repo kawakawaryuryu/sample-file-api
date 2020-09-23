@@ -17,3 +17,5 @@ spec:
           image: kawakawaryuryu/sample-file-api:0.0.1
         - name: sample-file-api-nginx
           image: kawakawaryuryu/sample-file-api-nginx:0.0.1
+          ports:
+            - containerPort: 80
