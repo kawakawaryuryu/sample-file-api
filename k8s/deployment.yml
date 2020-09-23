@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: sample-file-api-rs
+  name: sample-file-api-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: sample-file-api
