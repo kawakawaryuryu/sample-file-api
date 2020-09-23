@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample-file-api-rs
+spec:
+  selector:
+    matchLabels:
+      app: sample-file-api
+  template:
+    metadata:
+      labels:
+        app: sample-file-api
+    spec:
+      containers:
+        - name: sample-file-api-app
+          image: kawakawaryuryu/sample-file-api:0.0.1
+        - name: sample-file-api-nginx
+          image: kawakawaryuryu/sample-file-api-nginx:0.0.1
