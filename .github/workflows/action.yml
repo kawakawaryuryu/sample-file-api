@@ -11,8 +11,7 @@ env:
   IMAGE_NAME: sample-file-api
 
 jobs:
-  build:
-    name: build docker image
+  build_and_push:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
